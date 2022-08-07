@@ -1,6 +1,6 @@
 {
     "name": "vue-powerglitch",
-    "version": "0.0.1",
+    "version": "0.0.2",
     "types": "./build/types/index.d.ts",
     "main": "./lib/vue-powerglitch.umd.js",
     "module": "./lib/vue-powerglitch.es.js",

@@ -3,7 +3,7 @@ import { onMounted, ref } from 'vue';
 import { PowerGlitch } from 'powerglitch';
 
 const props = defineProps({
-    imageUrl: {
+    src: {
         type: String,
         required: true,
     },
@@ -20,7 +20,7 @@ onMounted(() => {
         glitched.value as unknown as HTMLDivElement,
         {
             ...props.options,
-            imageUrl: props.imageUrl,
+            imageUrl: props.src,
         },
     );
 });

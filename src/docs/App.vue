@@ -4,9 +4,7 @@ import GlitchedImage from '@/GlitchedImage.vue';
 
 <template>
     <GlitchedImage
-        :options="{
-            imageUrl: 'https://raw.githubusercontent.com/7PH/powerglitch/master/assets/logo-128.png',
-        }"
+        src="https://raw.githubusercontent.com/7PH/vue-powerglitch/master/assets/logo.png"
         class="logo"
     />
 </template>
@@ -15,5 +13,6 @@ import GlitchedImage from '@/GlitchedImage.vue';
 .logo {
     width: 100px;
     height: 100px;
+    margin: 0 auto;
 }
 </style>
