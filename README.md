@@ -4,7 +4,7 @@
 
 PowerGlitch is a standalone library with no external dependencies. It leverages CSS animations to create a glitch effect on images. No canvas or DOM manipulations are needed. It weights around 1.9kb minified and gzipped and 4.3kb minified.
 
-This library is a wrapper around the [PowerGlitch](https://github.com/7PH/powerglitch) library to glitch any image in Vue applications.
+This Vue library is a wrapper around [PowerGlitch](https://github.com/7PH/powerglitch).
 
 # Getting started
 
@@ -16,36 +16,24 @@ This library is a wrapper around the [PowerGlitch](https://github.com/7PH/powerg
 
 ## Install
 
-Install `vue-powerglitch` using a package manager
-```bash
-npm i --save vue-powerglitch
-# or
-yarn add vue-powerglitch
-```
+1. Install `vue-powerglitch` using a package manager
+    ```bash
+    npm i --save vue-powerglitch
+    # or
+    yarn add vue-powerglitch
+    ```
 
-Then, you can either install the plugin (recommended) or import and use the `GlitchedImage` component everywhere you need.
+2. Install the plugin to glitch images in any component without worrying about imports (recommended).
 
-`Install the plugin (recommended)`
-
-Installing the plugin will automatically install the library and register the `GlitchedImage` component, usable everywhere in your application.
-
-1. Import and install the corresponding plugin in your application creation script
     ```js
     import PowerGlitchPlugin from 'vue-powerglitch'
-    ```
-2. Register the plugin to your Vue application
-    ```js
+
     const app = createApp(app)
         .use(PowerGlitchPlugin)
         .mount('#app')
     ```
-3. Use the `GlitchedImage` component anywhere in your application.
+    alternatively, you can import the `GlitchedImage` component from `vue-powerglitch` anytime you want to use it.
 
-`Importing the component`
-
-If you prefer, you can also import the component directly where you want to use it.
-
-1. Import the component
     ```js
     // e.g. src/client/component/NavBar.vue
     import { GlitchedImage } from 'vue-powerglitch'
@@ -53,7 +41,18 @@ If you prefer, you can also import the component directly where you want to use 
 
 ## Glitch
 
-Add a glitched image to your Vue app
+1. Add a glitched image in your component
+    ```html
+    <GlitchedImage
+        src="https://raw.githubusercontent.com/7PH/vue-powerglitch/master/assets/logo.png"
+    />
+    ```
+
+2. If you installed the plugin, this is the only thing you need to do. Otherwise, do not forget to import the component when you use it.
+
+## Customize
+
+You can pass options to customize the glitch effect,
 ```html
 <GlitchedImage
     src="https://raw.githubusercontent.com/7PH/vue-powerglitch/master/assets/logo.png"
@@ -63,11 +62,9 @@ Add a glitched image to your Vue app
 />
 ```
 
-That's it, your image is glitched!
+The `options` props accepts any value defined in [the original PowerGlitch library](https://github.com/7PH/powerglitch).
 
-## Customize
-
-The `options` props accepts any value defined in [the original PowerGlitch library](https://github.com/7PH/powerglitch). You can also check the [playground](https://7ph.github.io/powerglitch/#/playground) to find out the best glitch options for your image.
+Take a look at the [playground](https://7ph.github.io/powerglitch/#/playground) to visually find out the best glitch options for your image.
 
 ## Gotcha 
 
