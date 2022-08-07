@@ -2,15 +2,20 @@
     "name": "vue-powerglitch",
     "version": "0.0.1",
     "types": "./build/types/index.d.ts",
-    "module": "./build/vue-powerglitch.es.js",
+    "main": "./lib/vue-powerglitch.umd.js",
+    "module": "./lib/vue-powerglitch.es.js",
     "exports": {
         ".": {
-            "import": "./build/vue-powerglitch.es.js"
+            "import": "./lib/vue-powerglitch.es.js",
+            "require": "./lib/vue-powerglitch.umd.js"
         }
     },
+    "files": [
+        "/lib"
+    ],
     "scripts": {
         "dev": "vite",
-        "build": "vite build && vue-tsc --emitDeclarationOnly --outDir build/types",
+        "build": "vite build && vue-tsc --emitDeclarationOnly --outDir lib/types",
         "preview": "vite preview"
     },
     "dependencies": {

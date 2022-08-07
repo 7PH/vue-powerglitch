@@ -1,16 +1,42 @@
-# Vue 3 + TypeScript + Vite
+# Vue PowerGlitch
 
-This template should help get you started developing with Vue 3 and TypeScript in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+<img src="./assets/intro.gif">
 
-## Recommended IDE Setup
+PowerGlitch is a standalone library with no external dependencies. It leverages CSS animations to create a glitch effect on images. No canvas or DOM manipulations are needed. It weights around 1.8kb minified and gzipped and 4kb minified.
 
-- [VS Code](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar)
+This library is a wrapper around the [PowerGlitch](https://github.com/7PH/powerglitch) library to glitch any image in Vue applications.
 
-## Type Support For `.vue` Imports in TS
+## Getting started
 
-Since TypeScript cannot handle type information for `.vue` imports, they are shimmed to be a generic Vue component type by default. In most cases this is fine if you don't really care about component prop types outside of templates. However, if you wish to get actual prop types in `.vue` imports (for example to get props validation when using manual `h(...)` calls), you can enable Volar's Take Over mode by following these steps:
+1. Install `vue-powerglitch` using a package manager
+    ```bash
+    npm i --save vue-powerglitch
+    # or
+    yarn add vue-powerglitch
+    ```
 
-1. Run `Extensions: Show Built-in Extensions` from VS Code's command palette, look for `TypeScript and JavaScript Language Features`, then right click and select `Disable (Workspace)`. By default, Take Over mode will enable itself if the default TypeScript extension is disabled.
-2. Reload the VS Code window by running `Developer: Reload Window` from the command palette.
+2. Import the component provided by the library
+    ```js
+    import { GlitchedImage } from 'vue-powerglitch'
+    ```
+    or using ES5 require
+    ```javascript
+    const GlitchedImage = require('vue-powerglitch').GlitchedImage
+    ```
 
-You can learn more about Take Over mode [here](https://github.com/johnsoncodehk/volar/discussions/471).
+3. Add the component to your Vue app
+    ```vue
+    <GlitchedImage
+        src="https://raw.githubusercontent.com/7PH/vue-powerglitch/master/assets/logo.png"
+        :options="{
+            //... (optional) customize the glitch effect here
+        }"
+    />
+    ```
+
+4. That's it, your image is glitched!
+5. In `options`, you can give any value accepted by [the original PowerGlitch library](https://github.com/7PH/powerglitch). You can also check the [playground](https://7ph.github.io/powerglitch/#/playground) to find out the best glitch options for your image.
+
+## Gotcha 
+
+You have to set the width and height of the `GlitchedImage` component to the size of the image you want to glitch. Otherwise, the image might not be visible. 

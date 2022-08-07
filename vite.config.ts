@@ -10,12 +10,12 @@ export default defineConfig({
         },
     },
     build: {
-        outDir: path.resolve(__dirname, 'build'),
+        outDir: path.resolve(__dirname, 'lib'),
         target: 'esnext',
         lib: {
             entry: path.resolve(__dirname, 'src/index.ts'),
             name: 'PowerGlitch',
-            formats: ['umd', 'es', 'iife'],
+            formats: ['umd', 'es'],
             fileName: (format) => `vue-powerglitch.${format}.js`,
         },
         rollupOptions: {
