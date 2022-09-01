@@ -2,7 +2,7 @@
 
 <img src="./assets/intro.gif">
 
-PowerGlitch is a standalone library with no external dependencies. It leverages CSS animations to create a glitch effect on images. No canvas or DOM manipulations are needed. It weights around 1.9kb minified and gzipped and 4.3kb minified.
+PowerGlitch is a standalone library with no external dependencies. It leverages CSS animations to create a glitch effect on images. No canvas or DOM manipulations are needed. It weights less than 2kb minified and gzipped.
 
 This Vue library is a wrapper around [PowerGlitch](https://github.com/7PH/powerglitch).
 
