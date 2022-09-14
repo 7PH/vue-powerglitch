@@ -19,15 +19,15 @@
         "preview": "vite preview"
     },
     "dependencies": {
-        "powerglitch": "^1.2.0",
-        "vue": "^3.2.38"
+        "powerglitch": "^2.1.0",
+        "vue": "^3.2.39"
     },
     "devDependencies": {
-        "@typescript-eslint/eslint-plugin": "^5.36.1",
-        "@vitejs/plugin-vue": "^3.0.3",
+        "@typescript-eslint/eslint-plugin": "^5.36.2",
+        "@vitejs/plugin-vue": "^3.1.0",
         "eslint": "^8.23.0",
         "eslint-plugin-vue": "^9.4.0",
-        "vite": "^3.0.9",
-        "vue-tsc": "^0.40.5"
+        "vite": "^3.1.0",
+        "vue-tsc": "^0.40.13"
     }
 }
