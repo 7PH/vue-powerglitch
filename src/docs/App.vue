@@ -1,35 +1,34 @@
 <script setup lang="ts">
-import { ref } from 'vue';
-import PowerGlitch from '../PowerGlitch.vue';
+import { Ref, ref } from 'vue';
+import { GlitchedElementRef } from '../lib/GlitchedElementRef';
 
-const show = ref(true);
+
+const glitched: Ref<GlitchedElementRef | null> = ref(null);
 </script>
 
 <template>
-    <div
-        class="container"
-    >
-        <div>
-            Hello
-            <PowerGlitch
-                v-if="show"
-            >
-                World
-            </PowerGlitch> !
-        </div>
-        <div>
-            <button @click="show = ! show">
-                Click me
-            </button>
-        </div>
+    <div class="container">
+        <button @click="glitched?.startGlitch">
+            Start
+        </button>
+        <button @click="glitched?.stopGlitch">
+            Stop
+        </button>
+        <br>
+        <GlitchedElement ref="glitched">
+            <span>
+                PowerGlitch 🌎
+            </span>
+        </GlitchedElement>
     </div>
 </template>
 
 <style scoped>
 .container {
-    width: 100px;
-    height: 100px;
+    width: 200px;
     margin: 0 auto;
+    text-align: center;
+    margin-top: 20px;
 }
 .logo {
     width: 100%;

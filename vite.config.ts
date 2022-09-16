@@ -1,9 +1,14 @@
+/// <reference types="vitest" />
 import vue from '@vitejs/plugin-vue';
 import path from 'path';
 import { defineConfig } from 'vite';
 
 export default defineConfig({
     plugins: [vue()],
+    test: {
+        globals: true, // Required for Web Animation API mock
+        environment: 'jsdom',
+    },
     resolve: {
         alias: {
             '@/': new URL('./src/', import.meta.url).pathname,
