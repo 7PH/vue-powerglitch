@@ -10,8 +10,9 @@ lerna-debug.log*
 node_modules
 build
 dist
-lib
 *.local
+/lib
+coverage
 
 # Editor directories and files
 .vscode/*

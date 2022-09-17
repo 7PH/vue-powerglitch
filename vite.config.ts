@@ -1,9 +1,17 @@
+/// <reference types="vitest" />
 import vue from '@vitejs/plugin-vue';
 import path from 'path';
 import { defineConfig } from 'vite';
 
 export default defineConfig({
     plugins: [vue()],
+    test: {
+        globals: true, // Required for Web Animation API mock
+        environment: 'jsdom',
+        coverage: {
+            reportsDirectory: 'docs/coverage',
+        },
+    },
     resolve: {
         alias: {
             '@/': new URL('./src/', import.meta.url).pathname,
@@ -11,9 +19,9 @@ export default defineConfig({
     },
     build: {
         outDir: path.resolve(__dirname, 'lib'),
-        target: 'esnext',
+        target: 'es6',
         lib: {
-            entry: path.resolve(__dirname, 'src/index.ts'),
+            entry: path.resolve(__dirname, 'src/lib/index.ts'),
             name: 'PowerGlitch',
             formats: ['umd', 'es'],
             fileName: (format) => `vue-powerglitch.${format}.js`,
