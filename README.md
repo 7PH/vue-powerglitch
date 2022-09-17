@@ -111,7 +111,6 @@ Here is an example using Vue 3 and Composition API
 ```html
 <script setup>
 import { ref } from 'vue'
-import { GlitchedElement } from 'vue-powerglitch'
 
 const glitched = ref(null)
 </script>
@@ -128,13 +127,6 @@ const glitched = ref(null)
 Using Vue 3 and Options API:
 
 ```html
-<script>
-import { GlitchedElement } from 'vue-powerglitch'
-
-export default {
-    components: { GlitchedElement },
-}
-</script>
 <template>
     <button @click="$refs.glitched.startGlitch">Start</button>
     <button @click="$refs.glitched.stopGlitch">Stop</button>
@@ -151,9 +143,9 @@ If using TypeScript, you have access to an exported `GlitchedElementRef` represe
 ```html
 <script setup>
 import { ref, Ref } from 'vue'
-import { GlitchedElement, GlitchedElementRef } from 'vue-powerglitch'
+import { GlitchedElementRef } from 'vue-powerglitch'
 
-const glitched: Ref<GlitchedElementRef?> = ref()
+const glitched: Ref<GlitchedElementRef | undefined> = ref()
 </script>
 
 <template>
