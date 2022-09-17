@@ -3,6 +3,7 @@ import { describe, it, expect } from 'vitest';
 import { mount } from '@vue/test-utils';
 import GlitchedElement from '../src/lib/GlitchedElement.vue';
 import { PowerGlitchOptions, RecursivePartial } from 'powerglitch';
+import { GlitchedElementRef } from '../src/lib';
 
 
 try {
@@ -31,41 +32,64 @@ const mountGlitchElement = (slot: string, options: RecursivePartial<PowerGlitchO
             },
             inline: !! inline,
         },
-    });
+    } as any);
 };
 
-describe('GlitchedElement', () => {
+describe('Glitch', () => {
     it('be exported', async () => {
         expect(GlitchedElement).toBeTruthy();
     });
 
-    it('can be glitched inline', async () => {
-        const wrapper = mountGlitchElement(GLITCHED_DIV, { }, true);
-        expect(getComputedStyle(wrapper.find('div').element).display).toBe('inline-block');
-    });
-
-    it('can be glitched inline', async () => {
+    it('default glitched element layout is block', async () => {
         const wrapper = mountGlitchElement(GLITCHED_DIV, { }, false);
         expect(getComputedStyle(wrapper.find('div').element).display).toBe('block');
     });
 
-    it('glitched element (slot) is duplicated the expected number of times based on options', async () => {
+    it('can be glitched as an inline-block', async () => {
+        const wrapper = mountGlitchElement(GLITCHED_DIV, { }, true);
+        expect(getComputedStyle(wrapper.find('div').element).display).toBe('inline-block');
+    });
+
+    it('glitched element (slot) is cloned the expected number of times based on options', async () => {
         const wrapper = mountGlitchElement(GLITCHED_DIV, { slice: { count: 3 } }, false);
         // Original element (1) + Cloned elements (3) = Total elements (4)
         expect(wrapper.findAll('.glitched-element').length).toBe(4);
     });
+});
 
+describe('createContainers option', () => {
     it('createContainers option is force-set to false', async () => {
         const wrapper = mountGlitchElement(GLITCHED_DIV, { createContainers: true }, false);
         // If createContainers is passed as-is (true), the glitched element would be burried inside two more divs (div > div > div > div > .glitched-element)
         expect(wrapper.findAll('div > div > .glitched-element').length).toBeGreaterThanOrEqual(1);
     });
+});
 
-    it('glitch controls are returned and can always be called without errors', async () => {
+describe('Glitch controls', () => {
+    it('default glitch controls do not return an error', async () => {
         const wrapper = mountGlitchElement(GLITCHED_DIV, { }, false);
-        expect(wrapper.vm.startGlitch()).toBeUndefined();
-        expect(wrapper.vm.startGlitch()).toBeUndefined();
-        expect(wrapper.vm.stopGlitch()).toBeUndefined();
-        expect(wrapper.vm.stopGlitch()).toBeUndefined();
+        wrapper.vm.startGlitch();
+        wrapper.vm.startGlitch();
+        wrapper.vm.stopGlitch();
+        wrapper.vm.stopGlitch();
+    });
+
+    it('returned glitch controls can always be called without errors', async () => {
+        const wrapper = mount({
+            components: { GlitchedElement },
+            template: `
+            <div>
+                <GlitchedElement ref="glitched" :options="{timing:{easing:'ease-in-out'}}">
+                    Glitched
+                </GlitchedElement>
+            </div>
+            `,
+        });
+        expect(wrapper.vm.$refs.glitched).toBeTruthy();
+        const glitched = wrapper.vm.$refs.glitched as GlitchedElementRef;
+        glitched.startGlitch();
+        glitched.startGlitch();
+        glitched.stopGlitch();
+        glitched.stopGlitch();
     });
 });

@@ -8,6 +8,9 @@ export default defineConfig({
     test: {
         globals: true, // Required for Web Animation API mock
         environment: 'jsdom',
+        coverage: {
+            reportsDirectory: 'docs/coverage',
+        },
     },
     resolve: {
         alias: {
@@ -16,9 +19,9 @@ export default defineConfig({
     },
     build: {
         outDir: path.resolve(__dirname, 'lib'),
-        target: 'esnext',
+        target: 'es6',
         lib: {
-            entry: path.resolve(__dirname, 'src/index.ts'),
+            entry: path.resolve(__dirname, 'src/lib/index.ts'),
             name: 'PowerGlitch',
             formats: ['umd', 'es'],
             fileName: (format) => `vue-powerglitch.${format}.js`,

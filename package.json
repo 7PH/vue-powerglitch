@@ -1,7 +1,7 @@
 {
     "name": "vue-powerglitch",
     "version": "0.0.3",
-    "types": "./lib/types/index.d.ts",
+    "types": "./lib/types/src/lib/index.d.ts",
     "main": "./lib/vue-powerglitch.umd.js",
     "module": "./lib/vue-powerglitch.es.js",
     "exports": {
@@ -14,13 +14,14 @@
         "/lib"
     ],
     "scripts": {
-        "dev": "vite",
-        "build": "vite build && vue-tsc --emitDeclarationOnly --outDir lib/types",
+        "dev": "vite --config vite-docs.config.ts",
+        "build": "vite --config vite-docs.config.ts build && npm run coverage && npx typedoc && vite build && vue-tsc --emitDeclarationOnly --outDir lib/types",
         "preview": "vite preview",
-        "test": "vitest --coverage"
+        "test": "vitest --coverage",
+        "coverage": "vitest --run --coverage"
     },
     "dependencies": {
-        "powerglitch": "file:../powerglitch",
+        "powerglitch": "^2.2.0",
         "vue": "^3.2.31"
     },
     "devDependencies": {
@@ -28,11 +29,12 @@
         "@vitejs/plugin-vue": "^3.1.0",
         "@vitest/coverage-c8": "^0.23.2",
         "@vitest/ui": "^0.23.2",
-        "@vue/test-utils": "^2.0.0-rc.21",
+        "@vue/test-utils": "^2.0.0-rc.33",
         "eslint": "^8.23.1",
         "eslint-plugin-vue": "^9.5.1",
         "jsdom": "^20.0.0",
         "jsdom-testing-mocks": "^1.6.0",
+        "typedoc": "^0.23.14",
         "vite": "^3.1.1",
         "vitest": "^0.23.2",
         "vue-tsc": "^0.40.13"

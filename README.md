@@ -1,10 +1,8 @@
 # Vue PowerGlitch
 
-<img src="./assets/intro.gif">
+<img src="./assets/intro.gif" alt="">
 
-PowerGlitch is a standalone library with no external dependencies. It leverages CSS animations to create a glitch effect on images. No canvas or DOM manipulations are needed. It weights less than 2kb minified and gzipped.
-
-This Vue library is a wrapper around [PowerGlitch](https://github.com/7PH/powerglitch).
+This Vue library is a wrapper around [PowerGlitch](https://github.com/7PH/powerglitch). PowerGlitch is a standalone library with no external dependencies. It leverages CSS animations to glitch anything on the web, without using a canvas. It weights less than 2kb minified and gzipped.
 
 # Getting started
 
@@ -32,27 +30,43 @@ This Vue library is a wrapper around [PowerGlitch](https://github.com/7PH/powerg
         .use(PowerGlitchPlugin)
         .mount('#app')
     ```
-    alternatively, you can import the `GlitchedElement` component from `vue-powerglitch` anytime you want to use it.
+    alternatively, you can import the `GlitchedElement` component and/or `vGlitch` directive from `vue-powerglitch` anytime you want to use them.
 
     ```js
     // e.g. src/client/component/NavBar.vue
     import { GlitchedElement } from 'vue-powerglitch'
+    import { vGlitch } from 'vue-powerglitch'
     ```
 
 ## Glitch
 
-1. Add a glitched element in your component
+You have two ways to glitch elements. 
+
+1. You can use the `GlitchedElement` component:
     ```html
     <GlitchedElement>
-        <div>PowerGlitch 🌎</div>
+        <p>
+            Power<b>Glitch</b> 🌎
+        </p>
     </GlitchedElement>
     ```
+    Specify whether it should behave as an inline-block with the `inline` prop:
+    ```html
+    Hello <GlitchedElement :inline='true'>PowerGlitch 🌎</GlitchedElement>
+    ```
 
-2. If you installed the plugin, this is the only thing you need to do. Otherwise, do not forget to import the component when you use it.
+2. You can use the `v-glitch` directive to glitch any HTMLElement:
+    ```html
+    Hello <span v-glitch>PowerGlitch 🌎</span>
+    ```
+
+Using the `v-glitch` is simpler, but it has two drawbacks:
+- It is not possible to combine `v-if` and `v-glitch` on the same HTMLElement
+- You can not manually control the animation using the glitch controls methods
 
 ## Customize
 
-You can pass options to customize the glitch effect,
+You can pass options to customize the glitch effect, using `GlitchedElement`:
 ```html
 <GlitchedElement
     :options="{
@@ -65,13 +79,25 @@ You can pass options to customize the glitch effect,
 </GlitchedElement>
 ```
 
-The `options` props accepts any value defined in [the original PowerGlitch library](https://github.com/7PH/powerglitch). The only value you can not set is `createContainers`. This value is always set to `false` by the component itself.
+Or using `v-glitch`:
+```html
+Hello <span v-glitch="{ ... }">PowerGlitch 🌎</span>
+```
+
+The `options` props accepts any value defined in [the original PowerGlitch library](https://github.com/7PH/powerglitch).
 
 Take a look at the [playground](https://7ph.github.io/powerglitch/#/playground) to visually find out the best glitch options for your element.
 
+`GlitchedElement` also accepts an `inline` prop (default: false) which lets you control whether you want the glitch container to act as an `inline-block`. This can be useful if you are trying to glitch an inline element, i.e. a single word in a sentence.
+```html
+Hello <GlitchedElement :inline="true"><span>PowerGlitch 🌎</span></GlitchedElement>
+```
+
 ## Glitch controls 
 
-The GlitchedElement component exposes two methods `startGlitch` and `stopGlitch` that let you control the glitch animation.
+Retrieving the glitch controls is only possible when glitching using `GlitchedElement`, it is not possible to control the glitch animation when using the `v-glitch` directive.
+
+The `GlitchedElement` component exposes two methods `startGlitch` and `stopGlitch` that let you control the glitch animation.
 
 Here is an example using Vue 3 and Composition API
 
@@ -100,7 +126,7 @@ import { GlitchedElement } from 'vue-powerglitch'
 
 export default {
     components: { GlitchedElement },
-};
+}
 </script>
 <template>
     <button @click="$refs.glitched.startGlitch">Start</button>
@@ -113,14 +139,14 @@ export default {
 
 ## TypeScript
 
-If using TypeScript, you have access to an exported `GlitchedElementRef`
+If using TypeScript, you have access to an exported `GlitchedElementRef` representing a reference to the component.
 
 ```html
 <script setup>
 import { ref, Ref } from 'vue'
 import { GlitchedElement, GlitchedElementRef } from 'vue-powerglitch'
 
-const glitched: Ref<GlitchedElementRef?> = ref();
+const glitched: Ref<GlitchedElementRef?> = ref()
 </script>
 
 <template>
