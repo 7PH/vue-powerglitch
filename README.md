@@ -10,6 +10,8 @@ This Vue library is a wrapper around [PowerGlitch](https://github.com/7PH/powerg
  <a href="#install">Install</a>
  → <a href="#glitch">Glitch</a>
  → <a href="#customize">Customize</a>
+ → <a href="#glitch-controls">Controls</a>
+ / <a href="#typescript">TypeScript</a>
 </p>
 
 ## Install
