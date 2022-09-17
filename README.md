@@ -4,6 +4,11 @@
 
 This Vue library is a wrapper around [PowerGlitch](https://github.com/7PH/powerglitch). PowerGlitch is a standalone library with no external dependencies. It leverages CSS animations to glitch anything on the web, without using a canvas. It weights less than 2kb minified and gzipped.
 
+Useful links:
+- [Original project repository and documentation](https://github.com/7PH/powerglitch)
+- [Code coverage report for vue-powerglitch](https://7ph.github.io/vue-powerglitch/coverage/)
+- [API reference for vue-powerglitch](https://7ph.github.io/vue-powerglitch/api-docs/)
+
 # Getting started
 
 <p align="center">
