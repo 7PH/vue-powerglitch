@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1663449126824" clover="3.2.0">
-  <project timestamp="1663449126824" name="All files">
+<coverage generated="1663529403599" clover="3.2.0">
+  <project timestamp="1663529403599" name="All files">
     <metrics statements="89" coveredstatements="89" conditionals="7" coveredconditionals="7" methods="6" coveredmethods="6" elements="102" coveredelements="102" complexity="0" loc="89" ncloc="89" packages="1" files="2" classes="2"/>
     <file name="GlitchedElement.vue" path="/home/braymond/WebstormProjects/vue-powerglitch/src/lib/GlitchedElement.vue">
       <metrics statements="60" coveredstatements="60" conditionals="5" coveredconditionals="5" methods="4" coveredmethods="4"/>

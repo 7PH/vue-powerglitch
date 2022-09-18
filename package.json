@@ -21,10 +21,13 @@
         "coverage": "vitest --run --coverage"
     },
     "dependencies": {
-        "powerglitch": "^2.2.0",
-        "vue": "^3.2.31"
+        "powerglitch": "^2.2.0"
+    },
+    "peerDependencies": {
+        "vue": ">= 3.0.0"
     },
     "devDependencies": {
+        "vue": "^3.2.31",
         "@typescript-eslint/eslint-plugin": "^5.37.0",
         "@vitejs/plugin-vue": "^3.1.0",
         "@vitest/coverage-c8": "^0.23.2",
