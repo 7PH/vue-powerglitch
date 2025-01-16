@@ -1,6 +1,6 @@
 {
     "name": "vue-powerglitch",
-    "version": "1.0.0",
+    "version": "1.1.0",
     "types": "./lib/types/src/lib/index.d.ts",
     "main": "./lib/vue-powerglitch.umd.js",
     "module": "./lib/vue-powerglitch.es.js",
@@ -21,13 +21,12 @@
         "coverage": "vitest --run --coverage"
     },
     "dependencies": {
-        "powerglitch": "^2.2.0"
+        "powerglitch": "^2.4.0"
     },
     "peerDependencies": {
         "vue": ">= 3.0.0"
     },
     "devDependencies": {
-        "vue": "^3.2.31",
         "@typescript-eslint/eslint-plugin": "^5.37.0",
         "@vitejs/plugin-vue": "^3.1.0",
         "@vitest/coverage-c8": "^0.23.2",
@@ -41,6 +40,7 @@
         "typescript": "^4.8.3",
         "vite": "^3.1.1",
         "vitest": "^0.23.2",
+        "vue": "^3.2.31",
         "vue-tsc": "^0.40.13"
     }
 }
